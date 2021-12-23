@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="with=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <title>Warehouse</title>
+</head>
+<body>
+<section class="header">
+    <nav>
+        <a href="main"><img src="img/logo.png"></a>
+        <div class="nav-links">
+            <ul>
+                <li><a href="main">HOME</a></li>
+                <li><a href="status">WAREHOUSE STATUS</a></li>
+                <li><a th:if="${logged == false}" href="login">LOGIN</a></li>
+                <li><a th:if="${logged == true}" href="add">ADD ITEM</a></li>
+                <li><a th:if="${logged == true}" href="delete">DELETE ITEM</a></li>
+                <li><a th:if="${logged == true}" href="warehouseman">WAREHOUSEMAN LIST</a></li>
+                <li><a th:if="${logged == true}" href="logout">LOGOUT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="text-box">
+        <h1>WAREHOUSE PAGE</h1>
+        <p>
+            This website was created by me(Paweł Dziwisz), but i used a lots of help from one of Youtuber Easy Tutorials.<br>
+            Of course i did a lots of changes, but the basis of the page was from tutorial.
+        </p>
+        <p>
+            <br>Functions :<br>
+            - Add product <br>
+            - Delete product (if product weight is 0, products are delete from the list)<br>
+            - Check status of Warehouse <br>
+            - Check list of Warehouseman <br>
+            - (Jesli ktos nie jest zalogowany to nie moze praktycznie nic zrobić, jedynie sprawdzić status magazynu który jest 0 bo nic tam póki co nie ma, <br>
+            - jesli wejdziemy na strone http://localhost:8080/add albo /delete /warehouseman to nic zobaczymy nic prócz napisu który mówi żeby sie zalogować <br>
+            - , natomiast zaraz po zalogowaniu zobaczymy cała funkcjonalnosc strony. Wylogowanie powoduje powrót do początku przed zalogowaniem. <br>
+            - Jesli po wylogowaniu wejdziemy w status zobaczymy tam produkty które dodalismy przed wylogowaniem)<br>
+
+        </p>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="with=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <title>Warehouse</title>
+</head>
+<body>
+<section class="header">
+  <nav>
+    <a href="main"><img src="img/logo.png"></a>
+    <div class="nav-links">
+      <ul>
+        <li><a href="main">HOME</a></li>
+        <li><a href="status">WAREHOUSE STATUS</a></li>
+        <li><a th:if="${logged == false}" href="login">LOGIN</a></li>
+        <li><a th:if="${logged == true}"href="add">ADD ITEM</a></li>
+        <li><a th:if="${logged == true}"href="delete">DELETE ITEM</a></li>
+        <li><a th:if="${logged == true}"href="warehouseman">WAREHOUSEMAN LIST</a></li>
+        <li><a th:if="${logged == true}" href="logout">LOGOUT</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div th:if="${logged == true}" class="but">
+    <form method="post" class="button">
+      <input type="text" placeholder="Nazwa" name="name">
+      <input type="text" placeholder="Waga" name="weight">
+      <input type="submit" value="Dodaj">
+    </form>
+  </div>
+  <table th:if="${logged == true}" class="content-table" >
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Weight(kg)</th>
+    </tr>
+    <tbody >
+    <tr th:each="products : ${products}" class="products">
+      <td><div th:text="${products.name}"></div></td>
+      <td><div th:text="${products.weight}"></div></td>
+    </tr>
+    </tbody>
+    </thead>
+
+  </table>
+  <a th:if="${logged == false}"><font color="#f0f8ff"><center>If u can using this warehouses firstly u have to log on</font></center></a>
+</section>
+</body>
+</html>
