@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import pl.Warehouse.database.ProductsDataBase;
 import pl.Warehouse.models.Product;
+import pl.Warehouse.services.implement.ProductService;
 import pl.Warehouse.session.SessionObject;
 
 import javax.annotation.Resource;
@@ -17,22 +17,22 @@ import javax.annotation.Resource;
 public class DeleteController {
 
     @Autowired
-    ProductsDataBase productsDataBase;
+    ProductService productService;
 
     @Resource
     SessionObject sessionObject;
 
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
-    public String delete(Model model){
-        model.addAttribute("products",this.productsDataBase.getProductsList());
+    public String showProductsWithAreDeleted(Model model){
+        model.addAttribute("products",this.productService.getProductsList());
         model.addAttribute("logged", this.sessionObject.isLogged());
 
         return "delete";
     }
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public String DeleteProducts(@RequestParam String name, @RequestParam Float weight) {
+    public String postProductsToDelete(@RequestParam String name, @RequestParam Float weight) {
 
-        productsDataBase.DeleteProducts(new Product(name,weight));
+        productService.DeleteProducts(new Product(name,weight));
         return "redirect:/delete";
     }
 }

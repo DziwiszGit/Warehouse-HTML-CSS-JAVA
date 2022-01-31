@@ -15,13 +15,13 @@ public class CommonController {
     SessionObject sessionObject;
 
     @RequestMapping(value = "/",method = RequestMethod.GET)
-    public String basiclogin(Model model){
+    public String basicLoginFromStartedPage(Model model){
         model.addAttribute("logged", this.sessionObject.isLogged());
         return "redirect:/main";
     }
 
     @RequestMapping(value = "/main",method = RequestMethod.GET)
-    public String basic(Model model){
+    public String basicLoginFromMainPage(Model model){
         model.addAttribute("logged", this.sessionObject.isLogged());
         return "main";
     }

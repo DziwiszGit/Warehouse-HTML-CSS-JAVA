@@ -1,6 +1,7 @@
 package pl.Warehouse.database;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import pl.Warehouse.models.Product;
 import pl.Warehouse.session.SessionObject;
@@ -10,8 +11,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
-@Component
+
 public class ProductsDataBase {
 
         private List<Product> ProductsList = new ArrayList<>();

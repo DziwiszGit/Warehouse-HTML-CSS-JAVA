@@ -1,9 +1,16 @@
 package pl.Warehouse.models;
 
+import javax.persistence.*;
+
+@Entity(name = "twarehouseman")
 public class Warehouseman {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String name;
     private String surname;
     private int age;
+    @Enumerated(EnumType.STRING)
     private Positions position;
     private boolean present;
 
@@ -13,6 +20,10 @@ public class Warehouseman {
         this.age = age;
         this.position = position;
         this.present = false;
+    }
+
+    public Warehouseman() {
+
     }
 
     public String getName() {

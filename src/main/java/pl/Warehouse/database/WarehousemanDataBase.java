@@ -1,13 +1,14 @@
 package pl.Warehouse.database;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import pl.Warehouse.models.Positions;
 import pl.Warehouse.models.Warehouseman;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+
 public class WarehousemanDataBase {
     private List<Warehouseman> warehousemen = new ArrayList<>();
 

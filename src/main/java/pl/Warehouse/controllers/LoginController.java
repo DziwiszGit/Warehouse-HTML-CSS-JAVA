@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.Warehouse.exceptions.AuthValidationException;
 
-import pl.Warehouse.services.AuthenticateSerivice;
+import pl.Warehouse.services.implement.AuthenticateSerivice;
 import pl.Warehouse.session.SessionObject;
 import pl.Warehouse.validation.LoginValidator;
 
@@ -21,18 +21,19 @@ public class LoginController {
 
     @Autowired
     AuthenticateSerivice authenticateSerivice;
+
     @Resource
     SessionObject sessionObject;
 
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model){
+    public String returnSessionBeforeSuccesLogin(Model model){
         model.addAttribute("logged", this.sessionObject.isLogged());
         return "login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@RequestParam String login, @RequestParam String password) {
+    public String validationAttemptToLogIn(@RequestParam String login, @RequestParam String password) {
         try {
             LoginValidator.validateLogin(login);
             LoginValidator.validatePass(password);
